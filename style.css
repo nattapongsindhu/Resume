@@ -260,10 +260,10 @@ h1 span {
 .entry-header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: flex-start;
   gap: 1rem;
   margin-bottom: 0.3rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .entry-title {
