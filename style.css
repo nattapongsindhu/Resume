@@ -90,6 +90,10 @@ a:hover { text-decoration: underline; }
   font-weight: 500;
 }
 
+.toolbar-brand span {
+  color: #4d8fc4;
+}
+
 .toolbar-status {
   display: flex;
   align-items: center;
@@ -448,9 +452,12 @@ h1 span {
     max-width: 100%;
   }
 
-  .resume-head, .section, .col-main, .col-side, .resume-body {
-    background: #fff !important;
-  }
+  * { color: #1c1c1a !important; background: #fff !important; }
+  .head-contact a, .entry-org, .entry-link { color: #0f3460 !important; }
+  .tags span, .tech-tags span { background: #efecea !important; color: #3a3835 !important; }
+  .cert-fill { background: #0f3460 !important; }
+  .cert-bar { background: #efecea !important; }
+  .divider { background: #e2ddd8 !important; }
 
   h1 { font-size: 1.9rem; }
   .head-title { font-size: 0.75rem; }
