@@ -3,7 +3,7 @@
 Single-page resume built with vanilla HTML, CSS, and JavaScript.  
 Deployed on GitHub Pages · Print/PDF ready · Dark/light theme toggle.
 
-**Live:** https://nattapongsindhu.github.io/resume
+**Live:** https://nattapongsindhu.github.io/Resume
 
 ## Stack
 - HTML5 / CSS3 / Vanilla JS
