@@ -429,12 +429,12 @@ h1 span {
 @media print {
   @page {
     size: A4;
-    margin: 7mm 9mm;
+    margin: 10mm 12mm;
   }
 
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 
-  html { font-size: 11px; }
+  html { font-size: 13px; }
 
   body {
     background: #fff !important;
@@ -452,60 +452,58 @@ h1 span {
     background: #fff !important;
   }
 
-  h1 { font-size: 1.4rem; }
-  .head-title { font-size: 0.62rem; }
+  h1 { font-size: 1.9rem; }
+  .head-title { font-size: 0.75rem; }
 
   .resume-head {
-    padding: 0.7rem 1.8rem 0.5rem !important;
-    gap: 1rem;
+    padding: 1rem 2rem 0.7rem !important;
+    gap: 1.5rem;
   }
 
-  .head-contact { font-size: 0.6rem; gap: 0.15rem; }
+  .head-contact { font-size: 0.68rem; gap: 0.25rem; }
 
-  .divider { margin: 0 1.8rem; }
+  .divider { margin: 0 2rem; }
 
   .section {
-    padding: 0.55rem 1.8rem !important;
-    gap: 0.9rem;
+    padding: 0.85rem 2rem !important;
+    gap: 1.2rem;
   }
 
-  .section-label { font-size: 0.52rem; }
-  .summary-text { font-size: 0.7rem; line-height: 1.5; }
+  .section-label { font-size: 0.6rem; }
+  .summary-text { font-size: 0.82rem; line-height: 1.65; }
 
-  .entry { margin-bottom: 0.6rem; }
-  .entry-title { font-size: 0.76rem; }
-  .entry-org { font-size: 0.63rem; }
-  .entry-date { font-size: 0.58rem; }
-  .entry-note { font-size: 0.66rem; line-height: 1.4; margin-top: 0.18rem; }
-  .entry-bullets li { font-size: 0.66rem; line-height: 1.42; margin-bottom: 0.08rem; }
+  .entry { margin-bottom: 0.9rem; }
+  .entry-title { font-size: 0.88rem; }
+  .entry-org { font-size: 0.73rem; }
+  .entry-date { font-size: 0.68rem; }
+  .entry-note { font-size: 0.76rem; line-height: 1.55; margin-top: 0.25rem; }
+  .entry-bullets li { font-size: 0.76rem; line-height: 1.55; margin-bottom: 0.15rem; }
 
-  /* KEEP 2-column layout — do NOT flatten */
+  /* KEEP 2-column layout */
   .resume-body {
-    grid-template-columns: 1fr 170px !important;
+    grid-template-columns: 1fr 200px !important;
   }
 
-  .col-side { padding: 0 1rem !important; }
+  .col-side { padding: 0 1.2rem !important; }
+  .side-section { padding: 0.9rem 0 !important; gap: 0.65rem !important; }
 
-  .side-section { padding: 0.7rem 0 !important; gap: 0.5rem !important; }
-
-  .skill-block { margin-bottom: 0.4rem; }
-  .skill-block h4 { font-size: 0.52rem; margin-bottom: 0.2rem; }
+  .skill-block { margin-bottom: 0.6rem; }
+  .skill-block h4 { font-size: 0.6rem; margin-bottom: 0.3rem; }
 
   .tags span, .tech-tags span {
-    font-size: 0.56rem;
-    padding: 0.1rem 0.38rem;
+    font-size: 0.65rem;
+    padding: 0.15rem 0.5rem;
   }
 
-  .cert-list { gap: 0.35rem; }
-  .cert-name { font-size: 0.58rem; margin-bottom: 0.15rem; }
-  .cert-bar { height: 2px; }
+  .cert-list { gap: 0.5rem; }
+  .cert-name { font-size: 0.68rem; margin-bottom: 0.2rem; }
+  .cert-bar { height: 3px; }
 
-  .avail-note { font-size: 0.62rem; line-height: 1.45; }
+  .avail-note { font-size: 0.72rem; line-height: 1.55; }
 
   a { color: #0f3460 !important; text-decoration: none !important; }
 
   .entry { page-break-inside: avoid; }
-  * { page-break-after: avoid; }
 }
 
 /* ============================
