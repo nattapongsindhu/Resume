@@ -41,8 +41,6 @@ Designed for both screen and print. Fits a single A4 page when printed or saved 
 ```
 Resume/
 ├── index.html        # Resume markup — all content
-├── style.css         # All styles including print layout
-├── script.js         # Theme toggle + cert bar animation
 ├── README.md
 └── LICENSE
 ```
