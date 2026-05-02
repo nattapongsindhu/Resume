@@ -6,7 +6,204 @@
   <title>Nattapong Sindhu — Resume</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <style>
+/* ============================
+   VARIABLES
+   ============================ */
+:root {
+  --bg: #f8f7f4;
+  --sheet: #ffffff;
+  --text: #1c1c1a;
+  --text-muted: #6b6760;
+  --text-light: #9b9890;
+  --accent: #0f3460;
+  --accent-2: #c0392b;
+  --border: #e2ddd8;
+  --tag-bg: #efecea;
+  --tag-text: #3a3835;
+  --bar-bg: #efecea;
+  --bar-fill: #0f3460;
+  --toolbar-bg: #1c1c1a;
+  --toolbar-text: #c8c5bf;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --sheet-width: 860px;
+  --sheet-pad: 3rem 3.5rem;
+}
+
+body.dark {
+  --bg: #111110;
+  --sheet: #181816;
+  --text: #e8e5df;
+  --text-muted: #8a8780;
+  --text-light: #5a5855;
+  --accent: #4d8fc4;
+  --accent-2: #e05a1a;
+  --border: #2a2a28;
+  --tag-bg: #222220;
+  --tag-text: #b0ada8;
+  --bar-bg: #222220;
+  --bar-fill: #4d8fc4;
+  --toolbar-bg: #0a0a09;
+  --toolbar-text: #8a8780;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 14px; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  transition: background 0.2s, color 0.2s;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* TOOLBAR */
+.toolbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--toolbar-bg); color: var(--toolbar-text);
+  height: 44px; display: flex; align-items: center;
+  justify-content: space-between; padding: 0 2rem;
+  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.04em;
+}
+.toolbar-left { display: flex; align-items: center; gap: 1.5rem; }
+.toolbar-brand { color: #fff; font-weight: 500; }
+.toolbar-brand span { color: #4d8fc4; }
+.toolbar-status { display: flex; align-items: center; gap: 0.4rem; opacity: 0.6; }
+.dot-green { width: 7px; height: 7px; background: #2a9d5c; border-radius: 50%; animation: blink 2s ease infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.toolbar-actions { display: flex; gap: 0.75rem; }
+.toolbar-actions button {
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+  color: var(--toolbar-text); padding: 0.3rem 0.9rem; border-radius: 3px;
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.04em; cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.toolbar-actions button:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+/* SHEET */
+.sheet { max-width: var(--sheet-width); margin: 0 auto; padding: calc(44px + 2.5rem) 0 3rem; background: transparent; }
+
+/* HEADER */
+.resume-head {
+  display: grid; grid-template-columns: 1fr auto; gap: 2rem;
+  align-items: end; padding: var(--sheet-pad); padding-bottom: 0; background: var(--sheet);
+}
+h1 { font-family: var(--mono); font-size: 2.2rem; font-weight: 600; letter-spacing: -0.03em; color: var(--text); line-height: 1; }
+h1 span { color: var(--accent); }
+.head-title { margin-top: 0.45rem; font-size: 0.82rem; color: var(--text-muted); font-family: var(--mono); letter-spacing: 0.02em; }
+.head-contact { display: flex; flex-direction: column; align-items: flex-end; gap: 0.3rem; font-family: var(--mono); font-size: 0.72rem; color: var(--text-muted); text-align: right; }
+.head-contact a:hover { color: var(--accent); }
+
+/* DIVIDER */
+.divider { height: 1px; background: var(--border); margin: 0 3.5rem; }
+
+/* SECTIONS */
+.section { display: grid; grid-template-columns: 110px 1fr; gap: 2rem; padding: 1.6rem 3.5rem; background: var(--sheet); }
+.side-section { grid-template-columns: 1fr; padding: 1.4rem 0; gap: 0.8rem; }
+.section-label { font-family: var(--mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-light); padding-top: 0.15rem; white-space: nowrap; }
+.summary-text { font-size: 0.88rem; color: var(--text-muted); line-height: 1.75; }
+
+/* TWO COLUMNS */
+.resume-body { display: grid; grid-template-columns: 1fr 220px; background: var(--sheet); }
+.col-main { border-right: 1px solid var(--border); }
+.col-side { padding: 0 2rem; }
+
+/* ENTRIES */
+.entry { margin-bottom: 1.6rem; }
+.entry:last-child { margin-bottom: 0; }
+.entry-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 0.3rem; flex-wrap: nowrap; }
+.entry-title { font-size: 0.9rem; font-weight: 600; color: var(--text); font-family: var(--sans); }
+.entry-org { font-size: 0.78rem; color: var(--accent); font-family: var(--mono); margin-top: 0.1rem; }
+.entry-date { font-family: var(--mono); font-size: 0.68rem; color: var(--text-light); white-space: nowrap; letter-spacing: 0.03em; }
+.entry-note { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; margin-top: 0.3rem; }
+.entry-link { font-family: var(--mono); font-size: 0.68rem; color: var(--accent-2); letter-spacing: 0.03em; white-space: nowrap; }
+.entry-bullets { list-style: none; margin-top: 0.5rem; }
+.entry-bullets li { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; padding-left: 1rem; position: relative; margin-bottom: 0.2rem; }
+.entry-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--text-light); font-size: 0.7rem; }
+
+/* TAGS */
+.tech-tags, .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem; }
+.tech-tags span, .tags span { background: var(--tag-bg); color: var(--tag-text); font-family: var(--mono); font-size: 0.65rem; padding: 0.2rem 0.55rem; border-radius: 2px; letter-spacing: 0.02em; }
+.tags em { font-style: normal; color: var(--accent-2); font-size: 0.62rem; }
+
+/* SIDEBAR */
+.avail-block { display: flex; flex-direction: column; gap: 0.4rem; }
+.avail-note { font-size: 0.75rem; color: var(--text-light); line-height: 1.6; margin-top: 0.4rem; }
+.skill-block { margin-bottom: 0.9rem; }
+.skill-block h4 { font-family: var(--mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-light); margin-bottom: 0.4rem; }
+
+/* CERT BARS */
+.cert-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.cert-name { display: block; font-family: var(--mono); font-size: 0.7rem; color: var(--text-muted); margin-bottom: 0.3rem; }
+.cert-bar { height: 3px; background: var(--bar-bg); border-radius: 2px; overflow: hidden; }
+.cert-fill { height: 100%; background: var(--bar-fill); border-radius: 2px; transition: width 1s ease; }
+
+/* ============================
+   PRINT STYLES
+   ============================ */
+@media print {
+  @page { size: A4; margin: 8mm 10mm; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  html { font-size: 11px; }
+  body { background: #fff !important; color: #1c1c1a !important; }
+  .no-print { display: none !important; }
+  .sheet { padding: 0 !important; max-width: 100%; }
+  * { color: #1c1c1a !important; background: #fff !important; }
+  .head-contact a, .entry-org, .entry-link { color: #0f3460 !important; }
+  .tags span, .tech-tags span { background: #efecea !important; color: #3a3835 !important; }
+  .cert-fill { background: #0f3460 !important; }
+  .cert-bar { background: #efecea !important; }
+  .divider { background: #e2ddd8 !important; }
+  h1 { font-size: 1.7rem; }
+  .head-title { font-size: 0.75rem; }
+  .resume-head { padding: 0.6rem 1.8rem 0.5rem !important; gap: 1.2rem; }
+  .head-contact { font-size: 0.66rem; gap: 0.2rem; }
+  .divider { margin: 0 1.8rem; }
+  .section { padding: 0.5rem 1.8rem !important; gap: 1rem; }
+  .section-label { font-size: 0.58rem; }
+  .summary-text { font-size: 0.76rem; line-height: 1.5; }
+  .entry { margin-bottom: 0.45rem; }
+  .entry-title { font-size: 0.82rem; }
+  .entry-org { font-size: 0.7rem; white-space: nowrap; }
+  .entry-date { font-size: 0.62rem; }
+  .entry-note { font-size: 0.72rem; line-height: 1.45; margin-top: 0.15rem; }
+  .entry-bullets li { font-size: 0.72rem; line-height: 1.45; margin-bottom: 0.08rem; }
+  .entry-link { font-size: 0.62rem !important; }
+  .resume-body { grid-template-columns: 1fr 210px !important; }
+  .col-side { padding: 0 1rem !important; }
+  .side-section { padding: 0.5rem 0 !important; gap: 0.5rem !important; }
+  .skill-block { margin-bottom: 0.4rem; }
+  .skill-block h4 { font-size: 0.58rem; margin-bottom: 0.2rem; }
+  .tags span, .tech-tags span { font-size: 0.6rem; padding: 0.1rem 0.4rem; white-space: nowrap; }
+  .cert-list { gap: 0.35rem; }
+  .cert-name { font-size: 0.62rem; margin-bottom: 0.12rem; white-space: nowrap; }
+  .cert-bar { height: 3px; }
+  .avail-note { font-size: 0.68rem; line-height: 1.45; }
+  a { color: #0f3460 !important; text-decoration: none !important; }
+  .entry { page-break-inside: avoid; }
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+  :root { --sheet-pad: 1.5rem; }
+  .divider { margin: 0 1.5rem; }
+  .resume-head { grid-template-columns: 1fr; gap: 1rem; }
+  .head-contact { align-items: flex-start; text-align: left; }
+  .section { grid-template-columns: 1fr; gap: 0.5rem; padding: 1.2rem 1.5rem; }
+  .section-label { font-size: 0.6rem; }
+  .resume-body { grid-template-columns: 1fr; }
+  .col-main { border-right: none; border-bottom: 1px solid var(--border); }
+  .col-side { padding: 0 1.5rem; }
+  .side-section { padding: 1rem 0; }
+  .toolbar { padding: 0 1rem; }
+  .toolbar-brand { display: none; }
+}
+  </style>
 </head>
 <body>
 
@@ -153,20 +350,56 @@
 
             <div class="entry">
               <div class="entry-header">
-                <h3 class="entry-title">LACC CS101 Python Labs</h3>
-                <a href="https://github.com/nattapongsindhu/LACC-CS101-Python-Labs" class="entry-link">github ↗</a>
+                <h3 class="entry-title">it-for-me</h3>
+                <span><a href="https://github.com/nattapongsindhu/it-for-me" class="entry-link">github ↗</a> · <a href="https://it-for-me.vercel.app" class="entry-link">live ↗</a></span>
               </div>
-              <p class="entry-note">Core Python coursework — functions, loops, data structures, file I/O.</p>
-              <div class="tech-tags"><span>Python</span><span>CS101</span></div>
+              <p class="entry-note">Automated Healthcare IT & Biomedical job tracker with real-time dashboard.</p>
+              <div class="tech-tags"><span>Python</span><span>GitHub Actions</span><span>Next.js</span></div>
+            </div>
+
+            <div class="entry">
+              <div class="entry-header">
+                <h3 class="entry-title">it-asset-tracker</h3>
+                <span><a href="https://github.com/nattapongsindhu/it-asset-tracker" class="entry-link">github ↗</a> · <a href="https://it-asset-tracker-silk.vercel.app" class="entry-link">live ↗</a></span>
+              </div>
+              <p class="entry-note">IT asset tracking system with role-based access, audit logs, and inventory search.</p>
+              <div class="tech-tags"><span>Next.js</span><span>Prisma</span><span>SQLite</span></div>
+            </div>
+
+            <div class="entry">
+              <div class="entry-header">
+                <h3 class="entry-title">network-configuration-guide</h3>
+                <span><a href="https://github.com/nattapongsindhu/network-configuration-guide" class="entry-link">github ↗</a> · <a href="https://network-configuration-guide.vercel.app" class="entry-link">live ↗</a></span>
+              </div>
+              <p class="entry-note">Interactive network topology & configuration manual with Mermaid.js diagrams.</p>
+              <div class="tech-tags"><span>Next.js</span><span>Mermaid.js</span><span>TypeScript</span></div>
+            </div>
+
+            <div class="entry">
+              <div class="entry-header">
+                <h3 class="entry-title">LA-weather-automate</h3>
+                <span><a href="https://github.com/nattapongsindhu/la-weather-automet" class="entry-link">github ↗</a> · <a href="https://nattapongsindhu.github.io/la-weather-automet/" class="entry-link">live ↗</a></span>
+              </div>
+              <p class="entry-note">Zero-cost weather pipeline — fetches LA weather every 6h, anomaly detection, SVG dashboard.</p>
+              <div class="tech-tags"><span>Python</span><span>CI/CD</span><span>GitHub Actions</span></div>
+            </div>
+
+            <div class="entry">
+              <div class="entry-header">
+                <h3 class="entry-title">called-LA-home</h3>
+                <span><a href="https://github.com/nattapongsindhu/called-LA-home" class="entry-link">github ↗</a> · <a href="https://called-la-home.vercel.app" class="entry-link">live ↗</a></span>
+              </div>
+              <p class="entry-note">LA housing assistance search app with eligibility logic and Google Maps integration.</p>
+              <div class="tech-tags"><span>Next.js</span><span>TypeScript</span><span>PWA</span></div>
             </div>
 
             <div class="entry">
               <div class="entry-header">
                 <h3 class="entry-title">IT Cybersecurity Planner</h3>
-                <a href="https://github.com/nattapongsindhu/IT-Cybersecurity-Planner" class="entry-link">github ↗</a>
+                <span><a href="https://github.com/nattapongsindhu/IT-Cybersecurity-Planner" class="entry-link">github ↗</a> · <a href="https://nattapongsindhu.github.io/IT-Cybersecurity-Planner/" class="entry-link">live ↗</a></span>
               </div>
-              <p class="entry-note">Study planner tracking certifications, coursework milestones, and lab hours.</p>
-              <div class="tech-tags"><span>Python</span><span>Markdown</span><span>Planning</span></div>
+              <p class="entry-note">Interactive degree planner for LACC Cybersecurity pathway.</p>
+              <div class="tech-tags"><span>HTML/CSS/JS</span><span>GitHub Pages</span></div>
             </div>
 
             <div class="entry">
@@ -174,17 +407,8 @@
                 <h3 class="entry-title">IT Cybersecurity Roadmap</h3>
                 <a href="https://github.com/nattapongsindhu/IT-Cybersecurity-Roadmap" class="entry-link">github ↗</a>
               </div>
-              <p class="entry-note">A+ → Network+ → Security+ path, organized by domain with resource curation.</p>
-              <div class="tech-tags"><span>Markdown</span><span>CompTIA</span><span>Roadmap</span></div>
-            </div>
-
-            <div class="entry">
-              <div class="entry-header">
-                <h3 class="entry-title">Portfolio Website</h3>
-                <a href="https://nattapongsindhu.github.io" class="entry-link">live ↗</a>
-              </div>
-              <p class="entry-note">Vanilla HTML/CSS/JS, deployed on GitHub Pages. Dark/light theme toggle.</p>
-              <div class="tech-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>GitHub Pages</span></div>
+              <p class="entry-note">Self-directed study roadmap A+ through PenTest+.</p>
+              <div class="tech-tags"><span>Markdown</span><span>CompTIA</span></div>
             </div>
 
           </div>
@@ -287,6 +511,13 @@
 
   </main><!-- /sheet -->
 
-  <script src="script.js"></script>
+  <script>
+    document.getElementById('print-btn').addEventListener('click', function() {
+      window.print();
+    });
+    document.getElementById('theme-toggle').addEventListener('click', function() {
+      document.body.classList.toggle('dark');
+    });
+  </script>
 </body>
 </html>
